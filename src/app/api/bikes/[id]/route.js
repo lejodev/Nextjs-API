@@ -15,3 +15,17 @@ export async function GET(response, { params }) {
     return NextResponse.json({ Error: error.message }, { status: 400 });
   }
 }
+
+export async function PUT(request, { params }) {
+  try {
+    const newBike = await request.json();
+    const bikeId = params.id;
+    const updateBike = await Bike.findByIdAndUpdate(bikeId, newBike, {
+      new: true,
+    });
+    return NextResponse.json(updateBike);
+  } catch (error) {
+    console.log(error.message);
+    return NextResponse.json({ "=Error=": error.message }, { status: 500 });
+  }
+}
