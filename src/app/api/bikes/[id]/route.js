@@ -23,9 +23,26 @@ export async function PUT(request, { params }) {
     const updateBike = await Bike.findByIdAndUpdate(bikeId, newBike, {
       new: true,
     });
-    return NextResponse.json(updateBike);
+    return NextResponse.json(updateBike, {
+      status: 203,
+    });
   } catch (error) {
     console.log(error.message);
     return NextResponse.json({ "=Error=": error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(request, { params }) {
+  try {
+    const id = params.id;
+    const deletedBike = await Bike.findByIdAndDelete(id);
+    if (!deletedBike) {
+      return NextResponse.json({ error: "Bike not found" }, { status: 400 });
+    }
+    return NextResponse.json(deletedBike, {
+      status: 200,
+    });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
