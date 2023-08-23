@@ -20,6 +20,7 @@ export const Bike = new Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     year: {
       type: Number,
