@@ -7,7 +7,6 @@ export async function GET(request, { params }) {
     databaseConnect();
     const userId = params.id;
     const userCart = await Cart.find({ userId: userId });
-    console.log(typeof userCart);
     return NextResponse.json({ userCart });
   } catch (error) {
     console.log(error);

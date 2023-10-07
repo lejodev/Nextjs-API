@@ -20,10 +20,13 @@ export const Bike = new Schema(
       type: String,
       required: true,
       trim: true,
-      unique: true,
     },
     year: {
       type: Number,
+      required: true,
+    },
+    available: {
+      type: Boolean,
       required: true,
     },
   },

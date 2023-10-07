@@ -5,16 +5,17 @@ import { databaseConnect } from "@/utils/db";
 export async function POST(request, { params }) {
   try {
     databaseConnect();
-    const user = await request.json();
-    const newUser = new User(user);
-    const savedUser = await newUser.save();
-    console.log(savedUser);
-    console.log(user);
-    return NextResponse.json(savedUser, { status: 203 });
+    const { userName, password } = await request.json();
+    return User.find({ name: userName, password: password })
+      .then(
+        (doc) => NextResponse.json(doc, { status: 200 })
+        // Set credentials here
+      )
+      .catch((error) =>
+        NextResponse.json({ "Error message": error }, { status: 400 })
+      );
   } catch (error) {
-    return NextResponse.json(
-      { Error: error.message },
-      { status: error.status }
-    );
+    console.log(error);
+    return NextResponse.json({ "Error message": error }, { status: 400 });
   }
 }
