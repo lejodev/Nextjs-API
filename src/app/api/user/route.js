@@ -5,6 +5,7 @@ import { databaseConnect } from "@/utils/db";
 export async function POST(request, { params }) {
   try {
     databaseConnect();
+    console.log("CARECHIMBA")
     const { userName, password } = await request.json();
     return User.find({ name: userName, password: password })
       .then(
