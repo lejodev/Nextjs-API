@@ -4,8 +4,8 @@ const Cart = new Schema(
   {
     id: Number,
     userId: { type: Schema.Types.ObjectId, ref: "User" },
-    bikeId: { type: Schema.Types.ObjectId, ref: "Bike", required: true },
-    amount: Number,
+    bikeIds: [{ type: Schema.Types.ObjectId, ref: "Bike", required: true }],
+    purchased: { type: Boolean, default: false }
   },
   { timestamps: true }
 );

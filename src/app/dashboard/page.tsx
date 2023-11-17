@@ -7,7 +7,7 @@ const DashboardPage = () => {
     console.log(data, status)
     console.log("SDFGDDDDDDDDDDDDDDDDDDDDDDDDDD")
     return (
-        <div>DashboardPage</div>
+        <div>Dashboard page</div>
     )
 }
 

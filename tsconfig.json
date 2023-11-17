@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/bikes/[id]/route.js", "src/app/api/route.js", "src/app/api/bikes/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/bikes/[id]/route.js", "src/app/api/route.js", "src/app/api/bikes/route.js", "src/middleware.js", "src/middleware.js", "src/app/layout.tsx", "src/app/Providers.jsx"],
   "exclude": ["node_modules"]
 }

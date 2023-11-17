@@ -5,12 +5,10 @@ import { databaseConnect } from "@/utils/db";
 export async function POST(request, { params }) {
   try {
     databaseConnect();
-    console.log("CARECHIMBA")
     const { userName, password } = await request.json();
     return User.find({ name: userName, password: password })
       .then(
         (doc) => NextResponse.json(doc, { status: 200 })
-        // Set credentials here
       )
       .catch((error) =>
         NextResponse.json({ "Error message": error }, { status: 400 })

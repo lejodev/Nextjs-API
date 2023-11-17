@@ -22,10 +22,7 @@ export async function DELETE(request, { params }) {
     if (!userId) {
       throw new Error("No user id provided");
     }
-    const deletedBike = await Cart.findOneAndDelete({
-      userId: userId,
-      bikeId: bikeId,
-    });
+    const deletedBike = await Cart.deleteMany({ userId: userId });
     if (!deletedBike) {
       return new Response("Problem deleting bike", { status: 400 });
     }
@@ -34,5 +31,4 @@ export async function DELETE(request, { params }) {
     console.log(error);
     return new Response(error);
   }
-  // return new Response("GONORRHIIIIAAA");
 }

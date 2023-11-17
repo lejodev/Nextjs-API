@@ -8,9 +8,11 @@ export async function POST(request, { params }) {
   try {
     databaseConnect();
     const userId = params.userId;
-    const cart = await Cart.find({ userId: userId });
+    // const cart = await Cart.find({ userId: userId });
+    const updatedCart = await Cart.findAndModify({ userId: userId }, { purchased: true }, { new: true })
+    console.log(updatedCart)
     await deleteBikes(cart);
-    return NextResponse.json(cart, { status: 200 });
+    return NextResponse.json(updatedCart, { status: 200 });
   } catch (error) {
     return new Response(error);
   }
@@ -25,7 +27,7 @@ async function deleteBikes(bikes) {
         const updatedBike = await Bike.findByIdAndUpdate(
           { _id: bike.bikeId },
           { available: false },
-          {new: true}
+          { new: true }
         );
         return updatedBike;
       })

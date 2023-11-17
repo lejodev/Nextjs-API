@@ -1,10 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
 import { databaseConnect } from "@/utils/db";
 import Cart from "@/models/Cart";
+import { getServerSession } from "next-auth";
+import { getSession } from "next-auth/react";
 
 export async function GET(request, { params }) {
-  databaseConnect();
-
+  const session = await getSession()
+  console.log("FGDSBSDV")
   return new Response("sdfgd");
 }
 

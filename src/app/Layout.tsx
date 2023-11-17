@@ -1,16 +1,16 @@
-import React from 'react'
-import Providers from './Providers'
+// import React from 'react'
+// import Providers from './Providers'
 
-export default function RootLayout({
-  children, }: {
-    children: React.ReactNode
-  }) {
-  return (
-    <html>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  )
-}
+// export default function RootLayout({
+//   children, }: {
+//     children: React.ReactNode
+//   }) {
+//   return (
+//     <html>
+//       <body>
+//         <Providers>{children}</Providers>
+//       </body>
+//     </html>
+//   )
+// }
 
